@@ -99,12 +99,18 @@ contract W3LzRefundTest is Test {
     AcceptingWallet accepting;
 
     function setUp() public {
-        // RPC override: set ETH_RPC_URL to any Ethereum archive RPC if the
-        // default endpoint is unavailable from your network.
-        string memory rpc = vm.envOr(
-            "ETH_RPC_URL",
-            string("https://eth.drpc.org")
-        );
+        // RPC: the v3 program rules require vm.envString("RPC_URL").
+        // ETH_RPC_URL is kept as a fallback for local runs, then the
+        // default endpoint.
+        string memory rpc;
+        try vm.envString("RPC_URL") returns (string memory v) {
+            rpc = v;
+        } catch {
+            rpc = vm.envOr(
+                "ETH_RPC_URL",
+                string("https://eth.drpc.org")
+            );
+        }
         vm.createSelectFork(rpc, 26481079);
         noReceive = new NoReceiveWallet();
         revertingReceive = new RevertingReceiveWallet();

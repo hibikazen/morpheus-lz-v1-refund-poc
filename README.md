@@ -1,6 +1,6 @@
 # Morpheus — LayerZero V1 refund bricks claims for stakers that cannot receive ETH
 
-PoC for a bug bounty report to Morpheus (devs@mor.org).
+PoC for a bug bounty report to Morpheus (security@mor.org, program v3).
 
 ## What it proves
 
@@ -30,10 +30,11 @@ Expected: 6 tests pass (2 controls, 2 mechanism reverts, the live-victim
 brick, and the exact-fee recovery). Fork block: Ethereum 26481079.
 
 If the default RPC endpoint is unavailable from your network, point the test
-at any Ethereum archive RPC instead:
+at any Ethereum archive RPC instead (the v3 program rules use `RPC_URL`;
+`ETH_RPC_URL` also works as a fallback):
 
 ```
-ETH_RPC_URL=https://ethereum.publicnode.com forge test
+RPC_URL=https://ethereum.publicnode.com forge test
 ```
 
 - `test_refundToEoaSucceeds` / `test_refundToAcceptingWalletSucceeds` —
