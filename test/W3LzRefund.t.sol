@@ -99,7 +99,13 @@ contract W3LzRefundTest is Test {
     AcceptingWallet accepting;
 
     function setUp() public {
-        vm.createSelectFork("https://ethereum.publicnode.com", 26481079);
+        // RPC override: set ETH_RPC_URL to any Ethereum archive RPC if the
+        // default endpoint is unavailable from your network.
+        string memory rpc = vm.envOr(
+            "ETH_RPC_URL",
+            string("https://ethereum.publicnode.com")
+        );
+        vm.createSelectFork(rpc, 26481079);
         noReceive = new NoReceiveWallet();
         revertingReceive = new RevertingReceiveWallet();
         accepting = new AcceptingWallet();

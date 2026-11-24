@@ -29,6 +29,13 @@ forge test
 Expected: 6 tests pass (2 controls, 2 mechanism reverts, the live-victim
 brick, and the exact-fee recovery). Fork block: Ethereum 26481079.
 
+If the default RPC endpoint is unavailable from your network, point the test
+at any Ethereum archive RPC instead:
+
+```
+ETH_RPC_URL=https://eth.drpc.org forge test
+```
+
 - `test_refundToEoaSucceeds` / `test_refundToAcceptingWalletSucceeds` —
   controls: claims with a refund-receiving address succeed.
 - `test_refundToNoReceiveWalletReverts` /
