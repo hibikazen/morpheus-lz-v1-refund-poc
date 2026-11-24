@@ -103,7 +103,7 @@ contract W3LzRefundTest is Test {
         // default endpoint is unavailable from your network.
         string memory rpc = vm.envOr(
             "ETH_RPC_URL",
-            string("https://ethereum.publicnode.com")
+            string("https://eth.drpc.org")
         );
         vm.createSelectFork(rpc, 26481079);
         noReceive = new NoReceiveWallet();

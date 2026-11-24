@@ -20,7 +20,7 @@ Total frozen: 9.3148 MOR + 73 wei, approx $6.32 at $0.678/MOR.
 ## Run it
 
 Requires [Foundry](https://getfoundry.sh). One command, no setup beyond an
-internet connection (the test uses the public `ethereum.publicnode.com` RPC):
+internet connection (the test uses the public `eth.drpc.org` RPC):
 
 ```
 forge test
@@ -33,7 +33,7 @@ If the default RPC endpoint is unavailable from your network, point the test
 at any Ethereum archive RPC instead:
 
 ```
-ETH_RPC_URL=https://eth.drpc.org forge test
+ETH_RPC_URL=https://ethereum.publicnode.com forge test
 ```
 
 - `test_refundToEoaSucceeds` / `test_refundToAcceptingWalletSucceeds` —
